@@ -1,7 +1,7 @@
 <template>
   <div id="App" class="container">
     <AppleHeader />
-    <router-view />
+    <!-- <router-view /> -->
   </div>
 </template>
 

@@ -6,20 +6,17 @@
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
-import ProductList from "@/components/ProductList.vue";
 import ProductService from "@/services/product.service";
 
 export default {
   name: "Home",
   components: {
     ProductCard,
-    ProductList,
   },
 
   data() {
     return {
       products: [],
-      activeIndex: -1,
     };
   },
 
@@ -29,6 +26,16 @@ export default {
         const { name, desciption, price, sale, top, img } = product;
         return [name, desciption, price, sale, top, img].join("");
       });
+    },
+  },
+
+  methods: {
+    async() {
+      try {
+        this.products = ProductService.getAll();
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
