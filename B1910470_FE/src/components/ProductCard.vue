@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <div class="card" style="width: 18rem">
-      <img class="card-img-top" :src="product.img" alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">
-          {{ product.desciption }}
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
+  <div v-if="product" class="card col-lg-3 col-6">
+    <img class="card-img-top" :src="product.img" />
+    <div class="card-body">
+      <h5 class="card-title text-dark text-center font-weight-bold">
+        {{ product.name }}
+      </h5>
+      <p class="card-text text-dark text-center">
+        <span class="font-weight-bold">{{ `${product.price}đ ` }}</span>
+        <del class="font-weight-light">{{
+          `${product.price - product.price * product.sale}đ`
+        }}</del>
+        {{ `(-${product.sale * 100}%)` }}
+      </p>
     </div>
   </div>
 </template>
@@ -23,3 +26,20 @@ export default {
   },
 };
 </script>
+
+<style>
+.card {
+  padding: 30px 0 30px;
+  border-radius: 20px;
+  background-color: rgb(248, 249, 250);
+}
+
+.card:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card-img-top {
+  margin: 0 auto;
+  width: 80%;
+}
+</style>

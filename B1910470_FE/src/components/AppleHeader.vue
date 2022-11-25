@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
       <a class="navbar-brand font-weight-bold" href="/">TL AppleStore</a>
       <button
         class="navbar-toggler"
@@ -15,29 +15,27 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <!-- <router-link :to="{ name: 'Home' }"> -->
-          <li class="nav-item active">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item active mr-3">
             <a class="nav-link" href="/"
               >Trang chủ <span class="sr-only">(current)</span></a
             >
           </li>
-          <!-- </router-link> -->
           <!-- <router-link :to="{ name: 'iPhone' }"> -->
-          <li class="nav-item">
+          <li class="nav-item mr-3">
             <a class="nav-link" href="#">iPhone</a>
           </li>
           <!-- </router-link> -->
-          <li class="nav-item">
+          <li class="nav-item mr-3">
             <a class="nav-link" href="#">Mac</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-3">
             <a class="nav-link" href="#">iPad</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-3">
             <a class="nav-link" href="#">Phụ kiện</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item mr-3">
             <a class="nav-link" href="#">AppleCare</a>
           </li>
         </ul>
@@ -57,7 +55,7 @@
   </header>
 </template>
 
-<script lang="ts">
+<script>
 export default { name: "AppleHeader" };
 </script>
 

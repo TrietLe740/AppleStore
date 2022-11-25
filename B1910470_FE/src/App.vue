@@ -1,18 +1,24 @@
 <template>
-  <div id="App" class="container">
-    <AppleHeader />
-    <!-- <router-view /> -->
+  <div id="App">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import AppleHeader from "@/components/AppleHeader.vue";
+import Home from "@/views/Home.vue";
+import AdminDashboard from "@/views/admin/AdminDashboard.vue";
+
 export default {
   name: "App",
   components: {
-    AppleHeader,
+    Home,
+    AdminDashboard,
   },
 };
 </script>
 
-<style></style>
+<style>
+#App {
+  overflow: hidden;
+}
+</style>

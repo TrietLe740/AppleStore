@@ -24,12 +24,12 @@ exports.findAll = async (req, res, next) => {
     const name = req.query;
     if (name) documents = await productService.findByName(name);
     else documents = await productService.find({});
+    return res.send(documents);
   } catch (error) {
     return next(
       new ApiError(500, `An error occurrend while retrieving the products `)
     );
   }
-  return res.send(documents);
 };
 
 exports.findOne = async (req, res, next) => {
