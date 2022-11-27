@@ -1,18 +1,27 @@
 <template>
   <div id="App">
-    <router-view></router-view>
+    <component :is="'MainLayout'">
+      <router-view />
+    </component>
   </div>
 </template>
 
 <script>
-import Home from "@/views/Home.vue";
-import AdminDashboard from "@/views/admin/AdminDashboard.vue";
+import MainLayout from "@/views/layout/MainLayout.vue";
 
 export default {
   name: "App",
+
   components: {
-    Home,
-    AdminDashboard,
+    MainLayout,
+  },
+
+  computed: {
+    layout() {
+      console.log(this.$route);
+      console.log(this.$route.meta.layout);
+      // return this.$route.meta.layout;
+    },
   },
 };
 </script>
