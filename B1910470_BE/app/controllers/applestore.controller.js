@@ -98,11 +98,11 @@ exports.deleteAll = async (_req, res, next) => {
 exports.findAllTop = async (_req, res, next) => {
   try {
     const productService = new ProductService(MongoDB.client);
-    const documents = await productService.findFavorite();
+    const documents = await productService.findTop();
     return res.send(documents);
   } catch (error) {
     return next(
-      new ApiError(500, "An error occurred while retrieving favorite contacts")
+      new ApiError(500, "An error occurred while retrieving top products")
     );
   }
 };

@@ -42,6 +42,14 @@ const routes = [
       layout: "MainLayout",
     },
   },
+  {
+    path: "/product/:id",
+    name: "ProductDetail",
+    component: () => import("@/views/ProductDetail.vue"),
+    meta: {
+      layout: "MainLayout",
+    },
+  },
   // NotFound
   {
     path: "/:pathMatch(.*)*",

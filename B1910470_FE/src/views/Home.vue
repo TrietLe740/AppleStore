@@ -1,18 +1,19 @@
 <template>
   <body>
-    <!-- <AppleHeader /> -->
     <HomeSlider />
-    <div class="row-12">
-      <h1 class="text-secondary text-center font-weight-bold">iPhone</h1>
+    <!-- iPhone -->
+    <div class="col-12">
+      <h1 class="text-secondary text-center font-weight-bold m-4">
+        <i class="fa-brands fa-apple"></i>iPhone
+      </h1>
     </div>
-    <div class="row top-item">
+    <div class="row">
       <ProductCard
         v-for="(item, index) in products"
         :key="index"
         :product="item"
       />
     </div>
-    <!-- <AppleFooter /> -->
   </body>
 </template>
 
@@ -25,8 +26,8 @@ export default {
   name: "Home",
 
   components: {
-    ProductCard,
     HomeSlider,
+    ProductCard,
   },
 
   data() {
@@ -35,13 +36,11 @@ export default {
     };
   },
 
-  computed: {},
-
   methods: {
     async getProducts() {
       try {
         this.products = await ProductService.getAll();
-        console.log(this.products);
+        this.products.console.log(this.products);
       } catch (error) {
         console.log(error);
       }
@@ -54,4 +53,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.carousel__next,
+.carousel__prev {
+  background-color: grey;
+  border-radius: 50%;
+  border: none;
+}
+
+.carousel__icon {
+  border-radius: 50%;
+}
+</style>

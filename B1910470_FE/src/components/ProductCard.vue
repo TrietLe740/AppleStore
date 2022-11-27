@@ -1,17 +1,18 @@
 <template>
-  <div v-if="product" class="card col-lg-3 col-6">
-    <img class="card-img-top" :src="product.img" />
-    <div class="card-body">
-      <h5 class="card-title text-dark text-center font-weight-bold">
-        {{ product.name }}
-      </h5>
-      <p class="card-text text-dark text-center">
-        <span class="font-weight-bold">{{ `${product.price}đ ` }}</span>
-        <del class="font-weight-light">{{
-          `${product.price - product.price * product.sale}đ`
-        }}</del>
-        {{ `(-${product.sale * 100}%)` }}
-      </p>
+  <div v-if="product" class="col-lg-3 col-sm-6 p-2">
+    <div class="card">
+      <img class="card-img-top" :src="product.img" />
+      <div class="card-body">
+        <h5 class="card-title text-dark text-center font-weight-bold">
+          {{ product.name }}
+        </h5>
+        <p class="card-text text-dark text-center">
+          <span class="font-weight-bold">{{
+            `${product.price - product.sale}đ `
+          }}</span>
+          <del class="font-weight-light">{{ `${product.price}đ` }}</del>
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
   padding: 30px 0 30px;
   border-radius: 20px;
   background-color: rgb(248, 249, 250);
+  cursor: pointer;
 }
 
 .card:hover {
