@@ -20,27 +20,31 @@
           ><i class="fab fa-cc-paypal fa-2x"></i
         ></a>
 
-        <form class="mt-4">
+        <Form class="mt-4" @submit="onSubmit" :validation-schema="schema">
           <div class="form-outline form-white mb-4">
             <label class="form-label" for="typeName">Tên chủ thẻ</label>
-            <input
-              type="text"
+            <Field
               id="typeName"
               class="form-control form-control-lg"
+              name="name"
+              type="text"
               placeholder="Tên chủ thẻ"
             />
+            <ErrorMessage class="errMsg" name="name" />
           </div>
 
           <div class="form-outline form-white mb-4">
             <label class="form-label" for="typeText">Số thẻ</label>
-            <input
-              type="text"
+            <Field
+              name="cardNumber"
+              type="number"
               id="typeText"
               class="form-control form-control-lg"
               placeholder="1234 5678 9101 1234"
               minlength="19"
               maxlength="19"
             />
+            <ErrorMessage class="errMsg" name="cardNumber" />
           </div>
 
           <div class="row mb-4">
@@ -50,7 +54,10 @@
                   >Tháng/Năm hết hạn</label
                 >
 
-                <select
+                <Field
+                  as="select"
+                  value="01"
+                  name="month"
                   class="form-control form-control-md mr-2"
                   style="width: 40%; display: inline"
                 >
@@ -66,12 +73,15 @@
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
-                </select>
-                <select
+                </Field>
+                <Field
+                  as="select"
+                  value="18"
+                  name="year"
                   class="form-control form-control-md"
                   style="width: 50%; display: inline"
                 >
-                  <option value="18">2018</option>
+                  <option value="18" selected>2018</option>
                   <option value="19">2019</option>
                   <option value="20">2020</option>
                   <option value="21">2021</option>
@@ -80,14 +90,15 @@
                   <option value="24">2024</option>
                   <option value="25">2025</option>
                   <option value="26">2026</option>
-                </select>
+                </Field>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-outline form-white">
                 <label class="form-label" for="typeText">CSC*</label>
-                <input
-                  type="password"
+                <Field
+                  name="csc"
+                  type="number"
                   id="typeText"
                   class="form-control form-control-md"
                   placeholder="123"
@@ -95,6 +106,7 @@
                   minlength="3"
                   maxlength="3"
                 />
+                <ErrorMessage class="errMsg" name="csc" />
               </div>
             </div>
           </div>
@@ -108,7 +120,6 @@
           <p class="mb-2">Chọn thanh toán</p>
           <div class="d-flex justify-content-between">
             <select class="form-control form-control-md mb-4">
-              <option>--Lựa chọn thanh toán--</option>
               <option>Trả trước 500,000đ</option>
               <option>Trả toàn bộ</option>
             </select>
@@ -120,7 +131,7 @@
               ></span>
             </div>
           </button>
-        </form>
+        </Form>
       </div>
     </div>
   </div>
@@ -128,21 +139,71 @@
 
 <script>
 import { formatVND } from "@/utils/format";
+import { Form, Field, ErrorMessage } from "vee-validate";
+import * as yup from "yup";
+import InvoiceService from "@/services/invoice.service";
 
 export default {
   name: "PaymentCard",
 
+  components: {
+    Form,
+    Field,
+    ErrorMessage,
+  },
+
+  data() {},
+
+  computed: {
+    schema() {
+      return yup.object({
+        name: yup
+          .string()
+          .required("*Trường này không để trống")
+          .min(5, "*Nhiều hơn 5 kí tự"),
+        cardNumber: yup
+          .string()
+          .required("*Trường này không để trống")
+          .length(16, "*Số thẻ phải có 16 số"),
+        csc: yup
+          .string()
+          .required("*Trường này không để trống")
+          .min(3, "*CSC phải có 3 chữ số"),
+        year: yup.string(),
+        month: yup.string(),
+      });
+    },
+  },
+
   methods: {
     formatVND,
+    onSubmit(value) {
+      InvoiceService.create({
+        payload: { cardItems: [...this.productCarts], ...value },
+      });
+      console.log({ cardItems: [...this.productCarts], ...value });
+    },
   },
 
   props: {
+    productCarts: Array,
     totalPurchase: Number,
   },
 };
 </script>
 
-<style>
+<style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.errMsg {
+  color: rgb(217, 255, 0);
+  font-size: 0.8rem;
+}
 .bank-card {
   background-color: #6c757d;
 }

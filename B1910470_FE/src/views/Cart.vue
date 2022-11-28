@@ -38,7 +38,10 @@
                   />
                 </div>
                 <!-- Payment Card -->
-                <PaymentCard :totalPurchase="totalPurchase" />
+                <PaymentCard
+                  :totalPurchase="totalPurchase"
+                  :productCarts="cartItems"
+                />
               </div>
             </div>
           </div>
@@ -69,7 +72,7 @@ export default {
   },
 
   created() {
-    this.cartItems = JSON.parse(window.localStorage.getItem("cartItem"));
+    this.cartItems = [...JSON.parse(window.localStorage.getItem("cartItem"))];
     console.log(this.cartItems);
   },
 
