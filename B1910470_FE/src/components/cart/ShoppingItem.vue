@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3">
+  <div class="card p-0 mb-3">
     <div class="card-body">
       <div class="d-flex justify-content-between">
         <div class="d-flex flex-row align-items-center">
@@ -11,7 +11,7 @@
               style="width: 65px"
             />
           </div>
-          <div class="ms-3">
+          <div>
             <h5>{{ name }}</h5>
             <p class="small mb-0">{{ option }}</p>
           </div>
@@ -42,12 +42,12 @@
               </button>
             </span>
           </div>
-          <div style="width: 80px">
-            <h5 class="mb-0">{{ format(price) }}</h5>
+          <div>
+            <h5 class="mb-0 mr-3">{{ format(price * quantity) }}</h5>
           </div>
-          <a href="#!" style="color: #cecece"
-            ><i class="fas fa-trash-alt"></i
-          ></a>
+          <span @click="deleteItem" style="color: #cecece">
+            <i class="fas fa-trash-alt"></i>
+          </span>
         </div>
       </div>
     </div>
@@ -75,17 +75,76 @@ export default {
     };
   },
 
+  emits: ["reload"],
+
   methods: {
     format(number) {
       return formatVND(number);
     },
 
     handleMinus() {
-      if (this.count != 1) this.count -= 1;
+      if (this.count != 1) {
+        this.count -= 1;
+        this.changeProductQuantity();
+      }
     },
 
     handlePlus() {
-      if (this.count >= 1 && this.count <= 9) this.count += 1;
+      if (this.count >= 1 && this.count <= 9) {
+        this.count += 1;
+        this.changeProductQuantity();
+      }
+    },
+
+    changeProductQuantity() {
+      let add = false;
+      let cartProducts = JSON.parse(window.localStorage.getItem("cartItem"));
+      if (cartProducts) {
+        cartProducts.forEach((item, index) => {
+          if (item.id == this.id) {
+            if (item.option === this.option) {
+              add = true;
+              cartProducts[index].quantity = this.count;
+              return;
+            }
+          }
+        });
+        if (add) {
+          window.localStorage.setItem(
+            "cartItem",
+            JSON.stringify(cartProducts) || {}
+          );
+          this.$emit("reload", true);
+        }
+      }
+    },
+
+    deleteItem() {
+      let add = false;
+      let cartProducts = JSON.parse(window.localStorage.getItem("cartItem"));
+      if (cartProducts) {
+        cartProducts.forEach((item, index) => {
+          if (item.id == this.id) {
+            if (item.option === this.option) {
+              add = true;
+              cartProducts.splice(index, 1);
+              return;
+            }
+          }
+        });
+        if (add) {
+          window.localStorage.setItem(
+            "cartItem",
+            JSON.stringify(cartProducts) || {}
+          );
+          this.$emit("reload", true);
+        }
+      }
+    },
+
+    clearProductCart() {
+      window.localStorage.setItem("cartItem", JSON.stringify([]));
+      this.$emit("reload", true);
     },
   },
 };
@@ -94,5 +153,9 @@ export default {
 <style scoped>
 .input-group {
   width: 120px;
+}
+
+.fa-trash-alt:hover {
+  color: black;
 }
 </style>

@@ -19,7 +19,9 @@
                   >
                     <div>
                       <p class="mb-1">Giỏ hàng của bạn</p>
-                      <p class="mb-0">Bạn có 4 sản phẩm trong giỏ hàng:</p>
+                      <p class="mb-0">
+                        Bạn có {{ totalProduct }} sản phẩm trong giỏ hàng:
+                      </p>
                     </div>
                   </div>
                   <!-- Shopping Item -->
@@ -32,10 +34,11 @@
                     :img="item.img"
                     :option="item.option"
                     :quantity="item.quantity"
+                    @reload="handleReload"
                   />
                 </div>
                 <!-- Payment Card -->
-                <PaymentCard />
+                <PaymentCard :totalPurchase="totalPurchase" />
               </div>
             </div>
           </div>
@@ -60,12 +63,33 @@ export default {
   data() {
     return {
       cartItems: [],
+      totalProduct: 0,
+      totalPurchase: 0,
     };
   },
 
   created() {
     this.cartItems = JSON.parse(window.localStorage.getItem("cartItem"));
     console.log(this.cartItems);
+  },
+
+  watch: {
+    cartItems() {
+      if (this.cartItems) {
+        this.totalProduct = 0;
+        this.totalPurchase = 0;
+        this.cartItems.forEach((element) => {
+          this.totalProduct += element.quantity;
+          this.totalPurchase += element.quantity * element.price;
+        });
+      }
+    },
+  },
+
+  methods: {
+    handleReload() {
+      this.cartItems = [...JSON.parse(window.localStorage.getItem("cartItem"))];
+    },
   },
 };
 </script>

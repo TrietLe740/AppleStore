@@ -82,7 +82,6 @@ export default {
 
   data() {
     return {
-      abc: "abc",
       product: [],
       chooseOption: 0,
       chooseColor: 0,
@@ -94,8 +93,8 @@ export default {
 
   async created() {
     console.log(this.$route.params);
-    this.abc = this.$route.params.id;
-    this.product = await ProductService.get(this.abc);
+    this.proxy = this.$route.params.id;
+    this.product = await ProductService.get(this.proxy);
     this.options = this?.product?.options[0] || [];
     this.colors = this?.product?.options[0]?.colors || [];
     console.log(this.product);
@@ -120,7 +119,7 @@ export default {
       if (!this.isSubmit) {
         this.isSubmit = true;
         let cartItem = {
-          quantity: 3,
+          quantity: 1,
           id: this.product._id,
           name: this.product.name,
           price: this.options.price - this.options.sale,
@@ -196,5 +195,6 @@ export default {
 .active {
   transform: scale(1.1);
   transition: all 0.4s ease;
+  border: 3px solid rgb(149, 149, 251);
 }
 </style>

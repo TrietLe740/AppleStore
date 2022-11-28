@@ -26,7 +26,7 @@
             <!-- iPhone -->
             <router-link :to="{ name: 'iPhone' }">
               <li class="nav-item mr-1">
-                <a class="nav-link" href="#">iPhone</a>
+                <a class="nav-link" href="/iphone">iPhone</a>
               </li>
             </router-link>
             <!-- Macbook -->

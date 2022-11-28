@@ -9,7 +9,7 @@
           </h5>
           <p class="card-text text-dark text-center">
             <span class="font-weight-bold">{{
-              `${product.price - product.sale}đ `
+              `${format(product.price - product.sale)} `
             }}</span>
             <del class="font-weight-light">{{ `${product.price}đ` }}</del>
           </p>
@@ -20,7 +20,15 @@
 </template>
 
 <script>
+import { formatVND } from "../utils/format";
+
 export default {
+  methods: {
+    format(number) {
+      return formatVND(number);
+    },
+  },
+
   props: {
     product: {
       type: Object,

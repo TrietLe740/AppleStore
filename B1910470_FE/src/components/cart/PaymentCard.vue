@@ -103,7 +103,7 @@
 
           <div class="d-flex justify-content-between">
             <p class="mb-2">Tổng đơn hàng</p>
-            <p class="mb-2">$4798.00</p>
+            <p class="mb-2">{{ formatVND(totalPurchase) }}</p>
           </div>
           <p class="mb-2">Chọn thanh toán</p>
           <div class="d-flex justify-content-between">
@@ -113,22 +113,32 @@
               <option>Trả toàn bộ</option>
             </select>
           </div>
+          <button type="submit" class="btn btn-dark btn-block btn-lg">
+            <div class="d-flex justify-content-between">
+              <span style="margin: 0 auto"
+                >Thanh toán <i class="fa-solid fa-check"></i
+              ></span>
+            </div>
+          </button>
         </form>
-        <button type="button" class="btn btn-dark btn-block btn-lg">
-          <div class="d-flex justify-content-between">
-            <span style="margin: 0 auto"
-              >Thanh toán <i class="fa-solid fa-check"></i
-            ></span>
-          </div>
-        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { formatVND } from "@/utils/format";
+
 export default {
   name: "PaymentCard",
+
+  methods: {
+    formatVND,
+  },
+
+  props: {
+    totalPurchase: Number,
+  },
 };
 </script>
 

@@ -89,12 +89,12 @@ const routes = [
       layout: "AdminLayout",
     },
   },
-  {
-    path: "/admin/products/:id",
-    name: "product.edit",
-    component: () => import("@/views/ProductEdit.vue"),
-    props: true,
-  },
+  // {
+  //   path: "/admin/products/:id",
+  //   name: "product.edit",
+  //   component: () => import("@/views/ProductEdit.vue"),
+  //   props: true,
+  // },
 ];
 
 const router = createRouter({
