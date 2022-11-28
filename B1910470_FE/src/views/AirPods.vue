@@ -1,15 +1,13 @@
 <template>
-  <div class="page">
+  <div>
     <h2 class="text-secondary text-center font-weight-bold mb-4">
-      <i class="fa-brands fa-apple mt-4"></i>iPad
+      <i class="fa-brands fa-apple mt-4"></i>AirPods
     </h2>
   </div>
 </template>
 
 <script>
-export default {
-  name: "iPad",
-};
+export default {};
 </script>
 
 <style></style>

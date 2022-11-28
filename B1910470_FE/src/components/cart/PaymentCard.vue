@@ -134,6 +134,6 @@ export default {
 
 <style>
 .bank-card {
-  background-color: rgb(91, 171, 136);
+  background-color: #6c757d;
 }
 </style>

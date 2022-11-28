@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <AdminHeader />
     <div class="dashboard main-content">
       <div class="admin-card-icon">

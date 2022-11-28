@@ -6,6 +6,9 @@ class ProductService {
   async getAll() {
     return (await this.api.get("/")).data;
   }
+  async find(query) {
+    return (await this.api.get("/", { query })).data;
+  }
   async create(data) {
     return (await this.api.post("/", data)).data;
   }

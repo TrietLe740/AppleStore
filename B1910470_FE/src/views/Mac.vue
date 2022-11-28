@@ -1,6 +1,8 @@
 <template>
   <div class="page">
-    <p>Mac</p>
+    <h2 class="text-secondary text-center font-weight-bold mb-4">
+      <i class="fa-brands fa-apple mt-4"></i>Mac
+    </h2>
   </div>
 </template>
 

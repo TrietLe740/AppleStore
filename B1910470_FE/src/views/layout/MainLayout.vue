@@ -2,6 +2,7 @@
   <div class="container">
     <AppleHeader />
     <slot></slot>
+    <hr />
     <AppleFooter />
   </div>
 </template>

@@ -19,13 +19,20 @@ exports.create = async (req, res, next) => {
 
 exports.findAll = async (req, res, next) => {
   let documents = [];
+  const query = {
+    top: req.body.top,
+    // type: req.body.type,
+  };
+  // console.log(query);
   try {
     const productService = new ProductService(MongoDB.client);
     const name = req.query;
-    if (name) documents = await productService.findByName(name);
-    else documents = await productService.find({});
+    // if (name) documents = await productService.findByName(name);
+    documents = await productService.find(query);
+
     return res.send(documents);
   } catch (error) {
+    console.log(error);
     return next(
       new ApiError(500, `An error occurrend while retrieving the products `)
     );

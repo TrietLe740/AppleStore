@@ -30,9 +30,23 @@ class ProductService {
     return result.value;
   }
 
-  async find(filter) {
-    const cursor = await this.Product.find(filter);
-    return await cursor.toArray();
+  // async find(filter) {
+  //   const cursor = await this.Product.find({ top: true });
+  //   console.log(filter);
+  //   console.log(await cursor.toArray());
+  //   return await cursor.toArray();
+  // }
+  find(filter) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const cursor = await this.Product.find({ top: true });
+        console.log(filter);
+        // console.log(await cursor.toArray());
+        resolve(await cursor.toArray());
+      } catch (error) {
+        reject(null);
+      }
+    });
   }
 
   async findByName(name) {

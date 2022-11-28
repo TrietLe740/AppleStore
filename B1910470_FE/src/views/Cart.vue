@@ -22,8 +22,19 @@
                       <p class="mb-0">Bạn có 4 sản phẩm trong giỏ hàng:</p>
                     </div>
                   </div>
-                  <ShoppingItem />
+                  <!-- Shopping Item -->
+                  <ShoppingItem
+                    v-for="(item, index) in cartItems"
+                    :key="index"
+                    :id="item.id"
+                    :name="item.name"
+                    :price="item.price"
+                    :img="item.img"
+                    :option="item.option"
+                    :quantity="item.quantity"
+                  />
                 </div>
+                <!-- Payment Card -->
                 <PaymentCard />
               </div>
             </div>
@@ -44,6 +55,17 @@ export default {
   components: {
     PaymentCard,
     ShoppingItem,
+  },
+
+  data() {
+    return {
+      cartItems: [],
+    };
+  },
+
+  created() {
+    this.cartItems = JSON.parse(window.localStorage.getItem("cartItem"));
+    console.log(this.cartItems);
   },
 };
 </script>

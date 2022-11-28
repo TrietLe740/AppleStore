@@ -1,12 +1,12 @@
 <template>
-  <div class="notfound row">
+  <div class="container notfound row">
     <div class="mx-auto">
-      <img class="notfound-img" src="../assets/img/404.gif" alt="" />
+      <img class="notfound-img col-12" src="../assets/img/404.gif" alt="" />
     </div>
     <h2 class="notfound-content font-weight-bold text-center col-12">
       Oops! Không tìm thấy trang mà bạn cần!
     </h2>
-    <div class="mx-auto mt-2">
+    <div class="mx-auto">
       <router-link to="/">
         <button class="go-back-btn btn text-light font-weight-bold">
           Về Trang chủ
@@ -22,8 +22,6 @@ export default {};
 
 <style>
 .notfound {
-  width: 100vw;
-  height: 100vh;
   background: #fff;
 }
 

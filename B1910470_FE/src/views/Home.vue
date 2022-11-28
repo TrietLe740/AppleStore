@@ -7,7 +7,7 @@
         <i class="fa-brands fa-apple"></i>iPhone
       </h1>
     </div>
-    <div class="row">
+    <div class="row p-2">
       <ProductCard
         v-for="(item, index) in products"
         :key="index"
@@ -39,8 +39,8 @@ export default {
   methods: {
     async getProducts() {
       try {
-        this.products = await ProductService.getAll();
-        this.products.console.log(this.products);
+        this.products = await ProductService.find({ top: true });
+        console.log(this.products);
       } catch (error) {
         console.log(error);
       }

@@ -35,6 +35,30 @@ const routes = [
     },
   },
   {
+    path: "/watch",
+    name: "AppleWatch",
+    component: () => import("@/views/AppleWatch.vue"),
+    meta: {
+      layout: "MainLayout",
+    },
+  },
+  {
+    path: "/airpods",
+    name: "AirPods",
+    component: () => import("@/views/AirPods.vue"),
+    meta: {
+      layout: "MainLayout",
+    },
+  },
+  {
+    path: "/applecare",
+    name: "AppleCare",
+    component: () => import("@/views/AppleCare.vue"),
+    meta: {
+      layout: "MainLayout",
+    },
+  },
+  {
     path: "/cart",
     name: "Cart",
     component: () => import("@/views/Cart.vue"),
@@ -61,6 +85,9 @@ const routes = [
     path: "/admin",
     name: "AdminDashboard",
     component: AdminDashboard,
+    meta: {
+      layout: "AdminLayout",
+    },
   },
   {
     path: "/admin/products/:id",
