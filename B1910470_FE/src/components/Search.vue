@@ -24,7 +24,7 @@
           style="border-radius: 5px; align-items: center"
         >
           <img class="img-fluid rounded-3 mr-3" width="50" :src="item.img" />
-          <h6>{{ item.name }} {{ item.price }}</h6>
+          <h6>{{ item.name }} giá {{ format(item.price) }}</h6>
         </div>
       </router-link>
     </div>
@@ -37,6 +37,8 @@
 
 <script>
 import ProductService from "@/services/product.service";
+import { formatVND } from "@/utils/format";
+
 export default {
   name: "Search",
 
@@ -65,6 +67,10 @@ export default {
 
   methods: {
     findProducts() {},
+
+    format(number) {
+      return formatVND(number);
+    },
   },
 };
 </script>
