@@ -154,6 +154,8 @@ export default {
 
   data() {},
 
+  emits: ["reload"],
+
   computed: {
     schema() {
       return yup.object({
@@ -177,11 +179,19 @@ export default {
 
   methods: {
     formatVND,
-    onSubmit(value) {
+    onSubmit(value, { resetForm }) {
       InvoiceService.create({
         payload: { cardItems: [...this.productCarts], ...value },
       });
+      this.clearProductCart();
+      this.$emit("reload", true);
       console.log({ cardItems: [...this.productCarts], ...value });
+      resetForm();
+    },
+
+    clearProductCart() {
+      window.localStorage.setItem("cartItem", JSON.stringify([]));
+      this.$emit("reload", true);
     },
   },
 

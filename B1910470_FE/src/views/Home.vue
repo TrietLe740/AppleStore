@@ -3,10 +3,13 @@
     <HomeSlider />
     <!-- iPhone -->
     <div class="col-12" v-if="iphoneProducts.length">
-      <h1 class="text-secondary text-center font-weight-bold m-4">
-        <i class="fa-brands fa-apple"></i>iPhone
-      </h1>
+      <a href="/iphone" style="text-decoration: none"
+        ><h1 class="text-secondary text-center font-weight-bold m-4">
+          <i class="fa-brands fa-apple"></i>iPhone
+        </h1></a
+      >
     </div>
+
     <div class="row p-2">
       <ProductCard
         v-for="(item, index) in iphoneProducts"
@@ -16,9 +19,11 @@
     </div>
     <!-- mac -->
     <div class="col-12" v-if="macProducts.length">
-      <h1 class="text-secondary text-center font-weight-bold m-4">
-        <i class="fa-brands fa-apple"></i>Mac
-      </h1>
+      <a href="/mac" style="text-decoration: none">
+        <h1 class="text-secondary text-center font-weight-bold m-4">
+          <i class="fa-brands fa-apple"></i>Mac
+        </h1>
+      </a>
     </div>
     <div class="row p-2">
       <ProductCard
@@ -29,9 +34,11 @@
     </div>
     <!-- iPad -->
     <div class="col-12" v-if="iPadProducts.length">
-      <h1 class="text-secondary text-center font-weight-bold m-4">
-        <i class="fa-brands fa-apple"></i>iPad
-      </h1>
+      <a href="/ipad" style="text-decoration: none"
+        ><h1 class="text-secondary text-center font-weight-bold m-4">
+          <i class="fa-brands fa-apple"></i>iPad
+        </h1></a
+      >
     </div>
     <div class="row p-2">
       <ProductCard
@@ -42,9 +49,11 @@
     </div>
     <!-- appleWatch -->
     <div class="col-12" v-if="appleWatchProducts.length">
-      <h1 class="text-secondary text-center font-weight-bold m-4">
-        <i class="fa-brands fa-apple"></i>AppleWatch
-      </h1>
+      <a href="/watch" style="text-decoration: none"
+        ><h1 class="text-secondary text-center font-weight-bold m-4">
+          <i class="fa-brands fa-apple"></i>AppleWatch
+        </h1>
+      </a>
     </div>
     <div class="row p-2">
       <ProductCard
@@ -55,9 +64,11 @@
     </div>
     <!-- airPods -->
     <div class="col-12" v-if="airPodsProducts.length">
-      <h1 class="text-secondary text-center font-weight-bold m-4">
-        <i class="fa-brands fa-apple"></i>AirPods
-      </h1>
+      <a href="/airpods" style="text-decoration: none"
+        ><h1 class="text-secondary text-center font-weight-bold m-4">
+          <i class="fa-brands fa-apple"></i>AirPods
+        </h1>
+      </a>
     </div>
     <div class="row p-2">
       <ProductCard
@@ -68,9 +79,11 @@
     </div>
     <!-- appleCare -->
     <div class="col-12" v-if="appleCareProducts.length">
-      <h1 class="text-secondary text-center font-weight-bold m-4">
-        <i class="fa-brands fa-apple"></i>AppleCare
-      </h1>
+      <a href="/applecare" style="text-decoration: none"
+        ><h1 class="text-secondary text-center font-weight-bold m-4">
+          <i class="fa-brands fa-apple"></i>AppleCare
+        </h1>
+      </a>
     </div>
     <div class="row p-2">
       <ProductCard

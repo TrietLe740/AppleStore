@@ -141,11 +141,6 @@ export default {
         }
       }
     },
-
-    clearProductCart() {
-      window.localStorage.setItem("cartItem", JSON.stringify([]));
-      this.$emit("reload", true);
-    },
   },
 };
 </script>

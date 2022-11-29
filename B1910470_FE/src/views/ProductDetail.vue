@@ -58,12 +58,10 @@
         <button
           type="button"
           class="btn btn-dark btn-block btn-lg mt-4 buy-btn"
+          @click="handleAddToCart"
         >
           <div class="d-flex justify-content-between">
-            <span
-              @click="handleAddToCart"
-              class="font-weight-bold"
-              style="margin: 0 auto"
+            <span class="font-weight-bold" style="margin: 0 auto"
               >Mua ngay</span
             >
           </div>

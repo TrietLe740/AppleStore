@@ -41,6 +41,7 @@
                 <PaymentCard
                   :totalPurchase="totalPurchase"
                   :productCarts="cartItems"
+                  @reload="handleReload"
                 />
               </div>
             </div>
