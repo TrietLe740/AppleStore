@@ -2,14 +2,79 @@
   <body>
     <HomeSlider />
     <!-- iPhone -->
-    <div class="col-12">
+    <div class="col-12" v-if="iphoneProducts.length">
       <h1 class="text-secondary text-center font-weight-bold m-4">
         <i class="fa-brands fa-apple"></i>iPhone
       </h1>
     </div>
     <div class="row p-2">
       <ProductCard
-        v-for="(item, index) in products"
+        v-for="(item, index) in iphoneProducts"
+        :key="index"
+        :product="item"
+      />
+    </div>
+    <!-- mac -->
+    <div class="col-12" v-if="macProducts.length">
+      <h1 class="text-secondary text-center font-weight-bold m-4">
+        <i class="fa-brands fa-apple"></i>Mac
+      </h1>
+    </div>
+    <div class="row p-2">
+      <ProductCard
+        v-for="(item, index) in macProducts"
+        :key="index"
+        :product="item"
+      />
+    </div>
+    <!-- iPad -->
+    <div class="col-12" v-if="iPadProducts.length">
+      <h1 class="text-secondary text-center font-weight-bold m-4">
+        <i class="fa-brands fa-apple"></i>iPad
+      </h1>
+    </div>
+    <div class="row p-2">
+      <ProductCard
+        v-for="(item, index) in iPadProducts"
+        :key="index"
+        :product="item"
+      />
+    </div>
+    <!-- appleWatch -->
+    <div class="col-12" v-if="appleWatchProducts.length">
+      <h1 class="text-secondary text-center font-weight-bold m-4">
+        <i class="fa-brands fa-apple"></i>AppleWatch
+      </h1>
+    </div>
+    <div class="row p-2">
+      <ProductCard
+        v-for="(item, index) in appleWatchProducts"
+        :key="index"
+        :product="item"
+      />
+    </div>
+    <!-- airPods -->
+    <div class="col-12" v-if="airPodsProducts.length">
+      <h1 class="text-secondary text-center font-weight-bold m-4">
+        <i class="fa-brands fa-apple"></i>AirPods
+      </h1>
+    </div>
+    <div class="row p-2">
+      <ProductCard
+        v-for="(item, index) in airPodsProducts"
+        :key="index"
+        :product="item"
+      />
+    </div>
+    <!-- appleCare -->
+    <div class="col-12" v-if="appleCareProducts.length">
+      <h1 class="text-secondary text-center font-weight-bold m-4">
+        <i class="fa-brands fa-apple"></i>AppleCare
+      </h1>
+    </div>
+    <div class="row p-2">
+      <ProductCard
+        v-for="(item, index) in appleCareProducts"
         :key="index"
         :product="item"
       />
@@ -33,14 +98,46 @@ export default {
   data() {
     return {
       products: [],
+      iphoneProducts: [],
+      macProducts: [],
+      iPadProducts: [],
+      appleWatchProducts: [],
+      airPodsProducts: [],
+      appleCareProducts: [],
     };
   },
 
   methods: {
     async getProducts() {
       try {
-        this.products = await ProductService.find({ top: true });
-        console.log(this.products);
+        this.products = await ProductService.find({
+          top: true,
+          type: "iphone",
+        });
+        this.iphoneProducts = await ProductService.find({
+          top: true,
+          type: "iphone",
+        });
+        this.macProducts = await ProductService.find({
+          top: true,
+          type: "mac",
+        });
+        this.iPadProducts = await ProductService.find({
+          top: true,
+          type: "ipad",
+        });
+        this.appleWatchProducts = await ProductService.find({
+          top: true,
+          type: "applewatch",
+        });
+        this.airPodsProducts = await ProductService.find({
+          top: true,
+          type: "airpods",
+        });
+        this.appleCareProducts = await ProductService.find({
+          top: true,
+          type: "appleCare",
+        });
       } catch (error) {
         console.log(error);
       }

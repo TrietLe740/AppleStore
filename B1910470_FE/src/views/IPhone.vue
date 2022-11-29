@@ -10,9 +10,9 @@
         class="col-12 iphone-ads"
       />
     </div>
-    <div class="row top-item p-2">
+    <div class="row top-item p-2" v-if="iphone.length">
       <ProductCard
-        v-for="(item, index) in products"
+        v-for="(item, index) in iphone"
         :key="index"
         :product="item"
       />
@@ -33,15 +33,20 @@ export default {
 
   data() {
     return {
-      products: [],
+      iphone: [],
     };
+  },
+
+  created() {
+    this.getProducts();
   },
 
   methods: {
     async getProducts() {
       try {
-        this.products = await ProductService.getAll();
-        console.log(this.products);
+        this.iphone = await ProductService.find({
+          type: "iphone",
+        });
       } catch (error) {
         console.log(error);
       }

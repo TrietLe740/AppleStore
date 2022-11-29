@@ -59,21 +59,7 @@
                 <a class="nav-link" href="#">AppleCare</a>
               </li>
             </router-link>
-            <!-- Thanh tìm kiếm -->
-            <form class="form-inline my-2 my-lg-0 ml-5" action="#">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Tìm kiếm sản phẩm"
-                aria-label="Search"
-              />
-              <button
-                class="btn btn-outline-secondary my-2 my-sm-0"
-                type="submit"
-              >
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </form>
+            <Search />
             <!-- Cart -->
             <router-link :to="{ name: 'Cart' }">
               <button
@@ -91,8 +77,15 @@
 </template>
 
 <script>
+import Search from "@/components/Search.vue";
+
 export default {
   name: "AppleHeader",
+
+  components: {
+    Search,
+  },
+
   methods: {
     openDropdownUser() {
       document.getElementById("dropdownUser").classList.toggle("show");

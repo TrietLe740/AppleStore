@@ -7,7 +7,8 @@ class ProductService {
     return (await this.api.get("/")).data;
   }
   async find(query) {
-    return (await this.api.get("/", { query })).data;
+    console.log(query);
+    return (await this.api.get("/", { params: query })).data;
   }
   async create(data) {
     return (await this.api.post("/", data)).data;

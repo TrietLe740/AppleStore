@@ -91,16 +91,26 @@ export default {
     };
   },
 
+  watch: {
+    $route() {
+      this.getProduct();
+    },
+  },
+
   async created() {
-    console.log(this.$route.params);
-    this.proxy = this.$route.params.id;
-    this.product = await ProductService.get(this.proxy);
-    this.options = this?.product?.options[0] || [];
-    this.colors = this?.product?.options[0]?.colors || [];
-    console.log(this.product);
+    this.getProduct();
   },
 
   methods: {
+    async getProduct() {
+      console.log(this.$route.params);
+      this.proxy = this.$route.params.id;
+      this.product = await ProductService.get(this.proxy);
+      this.options = this?.product?.options[0] || [];
+      this.colors = this?.product?.options[0]?.colors || [];
+      console.log(this.product);
+    },
+
     format(number) {
       return formatVND(number);
     },

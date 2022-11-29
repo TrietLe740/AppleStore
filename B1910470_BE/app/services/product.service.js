@@ -39,11 +39,13 @@ class ProductService {
   find(filter) {
     return new Promise(async (resolve, reject) => {
       try {
-        const cursor = await this.Product.find({ top: true });
+        const cursor = await this.Product.find(filter);
         console.log(filter);
         // console.log(await cursor.toArray());
-        resolve(await cursor.toArray());
+        let result = await cursor.toArray();
+        resolve(result);
       } catch (error) {
+        console.log(error);
         reject(null);
       }
     });
