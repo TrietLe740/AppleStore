@@ -1,34 +1,47 @@
 <template>
   <div class="container">
-    <AdminHeader />
+    <!-- Tab thông tin bên trên -->
     <div class="dashboard main-content">
-      <div class="admin-card-icon">
+      <a
+        href=""
+        class="admin-card-icon"
+        style="text-decoration: none; color: black"
+      >
         <div class="admin-card-icon-body">
           <div class="admin-card-icon-i">
             <i class="fa fa-users"></i>
           </div>
           <h3>Người dùng</h3>
         </div>
-      </div>
-      <div class="admin-card-icon">
+      </a>
+      <a
+        href="/admin/products"
+        class="admin-card-icon"
+        style="text-decoration: none; color: black"
+      >
         <div class="admin-card-icon-body">
           <div class="admin-card-icon-i">
             <i class="fa fa-shopping-bag"></i>
           </div>
           <h3>Sản phẩm</h3>
         </div>
-      </div>
-      <div class="admin-card-icon">
+      </a>
+      <a
+        href=""
+        class="admin-card-icon"
+        style="text-decoration: none; color: black"
+      >
         <div class="admin-card-icon-body">
           <div class="admin-card-icon-i">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
           <h3>Đơn hàng</h3>
         </div>
-      </div>
+      </a>
+      <!-- Top Sản phẩm -->
       <div class="table">
         <div class="table-head">
-          <h3 class="font-weight-bold">Top sản phẩm</h3>
+          <h3 class="font-weight-bold mt-2">Top sản phẩm</h3>
         </div>
         <div class="table-body">
           <div class="table-responsive">
@@ -41,7 +54,6 @@
                   <th>Thao tác</th>
                 </tr>
               </thead>
-              <!-- Top Sản phẩm -->
               <tbody>
                 <TopTable
                   v-for="(item, index) in products"
@@ -53,31 +65,31 @@
           </div>
         </div>
       </div>
+      <!-- Thông tin bên phải -->
       <div class="admin-cards">
         <div class="admin-card">
           <div class="icon">
             <i class="fa fa-users"></i>
           </div>
-          <div class="num">1000</div>
           <h3>Users</h3>
+          <div class="num">1000</div>
         </div>
         <div class="admin-card">
           <div class="icon">
             <i class="fa fa-copy"></i>
           </div>
-          <div class="num">3400</div>
           <h3>Projects</h3>
+          <div class="num">3400</div>
         </div>
         <div class="admin-card">
           <div class="icon">
             <i class="fa fa-shopping-bag"></i>
           </div>
-          <div class="num">2000</div>
           <h3>Products</h3>
+          <div class="num">2000</div>
         </div>
       </div>
     </div>
-    <AdminFooter />
   </div>
 </template>
 
@@ -120,11 +132,10 @@ export default {
 
 <style>
 .main-content {
-  padding: 105px 25px 0 0;
+  padding: 20px 0 0 0;
   margin-left: 100px;
   z-index: -1;
   min-height: 600px;
-  background-color: #f1fdf3;
 }
 
 .dashboard {
@@ -293,13 +304,7 @@ export default {
   padding: 0;
 }
 
-.admin-card .num {
-  font-size: 50px;
-  font-weight: bold;
-}
-
 .admin-card h3 {
-  margin-top: 10px;
   font-size: 20px;
   margin-left: 5px;
 }

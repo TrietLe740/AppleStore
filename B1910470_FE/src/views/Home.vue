@@ -99,6 +99,7 @@
 import HomeSlider from "@/components/HomeSlider.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import ProductService from "@/services/product.service";
+import "vue3-carousel/dist/carousel.css";
 
 export default {
   name: "Home",

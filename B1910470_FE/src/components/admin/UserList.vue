@@ -8,7 +8,9 @@
         <a href="" title="View">
           <i class="fa fa-eye"></i>
         </a>
-        <router-link :to="{ name: 'product.edit', params: { id: product._id } }"
+        <router-link
+          style="text-decoration: none"
+          :to="{ name: 'product.edit', params: { id: product._id } }"
           ><i class="fa fa-pencil"></i
         ></router-link>
         <a href="" title="Delete">

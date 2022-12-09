@@ -57,6 +57,7 @@ exports.update = async (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
     return next(new ApiError(400, "Data to update can not be empty"));
   }
+  console.log(req.body);
 
   try {
     const productService = new ProductService(MongoDB.client);

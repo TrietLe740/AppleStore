@@ -1,6 +1,6 @@
 <template>
-  <div v-if="product" class="col-lg-3 col-6 p-2">
-    <router-link :to="`/product/${product._id}`">
+  <div v-if="product.hidden == false" class="col-lg-3 col-6 p-2">
+    <router-link style="text-decoration: none" :to="`/product/${product._id}`">
       <div class="card">
         <img class="card-img-top" :src="product.img" />
         <div class="card-body">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { formatVND } from "../utils/format";
+import { formatVND } from "@/utils/format";
 
 export default {
   methods: {

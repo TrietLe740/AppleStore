@@ -12,6 +12,8 @@ class ProductService {
       price: payload.price,
       sale: payload.sale,
       top: payload.top,
+      remain: payload.remain,
+      hidden: payload.hidden,
     };
 
     Object.keys(product).forEach(

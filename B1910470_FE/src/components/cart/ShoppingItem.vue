@@ -12,12 +12,13 @@
             />
           </div>
           <div>
-            <h5>{{ name }}</h5>
+            <h5>{{ this.remain }}</h5>
             <p class="small mb-0">{{ option }}</p>
           </div>
         </div>
         <div class="d-flex flex-row align-items-center">
           <div class="input-group mr-3">
+            <!-- Minus -->
             <span class="input-group-prepend">
               <button
                 type="button"
@@ -32,6 +33,7 @@
               class="form-control input-number"
               v-model="count"
             />
+            <!-- Plus -->
             <span class="input-group-append">
               <button
                 type="button"
@@ -66,6 +68,7 @@ export default {
     price: Number,
     option: String,
     img: String,
+    remain: Number,
     quantity: Number,
   },
 
@@ -91,11 +94,14 @@ export default {
 
     handlePlus() {
       if (this.count >= 1 && this.count <= 9) {
-        this.count += 1;
-        this.changeProductQuantity();
+        if (this.count <= this.remain) {
+          this.count += 1;
+          this.changeProductQuantity();
+        }
       }
     },
 
+    // Thay đổi giá trị đơn hàng
     changeProductQuantity() {
       let add = false;
       let cartProducts = JSON.parse(window.localStorage.getItem("cartItem"));

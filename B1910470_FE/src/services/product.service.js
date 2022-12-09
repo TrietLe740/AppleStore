@@ -25,5 +25,8 @@ class ProductService {
   async delete(id) {
     return (await this.api.delete(`/${id}`)).data;
   }
+  // async hidden(id) {
+  //   return (await this.api.patch(`/${id}`, data)).data;
+  // }
 }
 export default new ProductService();

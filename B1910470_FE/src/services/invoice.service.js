@@ -8,5 +8,9 @@ class InvoiceService {
     console.log(data);
     return (await this.api.post("/", data)).data;
   }
+
+  async findByPhoneNumber(data) {
+    return (await this.api.get("/", { params: data })).data;
+  }
 }
 export default new InvoiceService();

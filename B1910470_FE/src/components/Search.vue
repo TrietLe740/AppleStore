@@ -1,10 +1,6 @@
 <template>
   <!-- Thanh tìm kiếm -->
-  <form
-    style="position: relative"
-    class="form-inline my-2 my-lg-0 ml-5"
-    action="#"
-  >
+  <form style="position: relative" class="form-inline my-2 my-lg-0" action="#">
     <input
       class="form-control mr-sm-2"
       id="search"
@@ -15,6 +11,7 @@
     />
     <div class="dropdown" style="">
       <router-link
+        style="text-decoration: none"
         :to="`/product/${item._id}`"
         v-for="(item, index) in searchResult"
         :key="index"
@@ -29,7 +26,7 @@
       </router-link>
     </div>
 
-    <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
+    <button class="btn btn-outline-secondary my-2 my-sm-0 mr-1" type="submit">
       <i class="fa-solid fa-magnifying-glass"></i>
     </button>
   </form>

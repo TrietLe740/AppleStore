@@ -1,8 +1,12 @@
 <template>
   <div id="App">
-    <component :is="'MainLayout' || 'AdminLayout'">
+    <MainLayout v-if="this.$route.meta.layout === 'MainLayout'">
       <router-view />
-    </component>
+    </MainLayout>
+
+    <AdminLayout v-if="this.$route.meta.layout === 'AdminLayout'">
+      <router-view />
+    </AdminLayout>
   </div>
 </template>
 
@@ -20,8 +24,8 @@ export default {
 
   computed: {
     layout() {
-      console.log(this.$route);
-      console.log(this.$route.meta.layout);
+      // console.log(this.$route);
+      // console.log(this.$route.meta.layout);
       return this.$route.meta.layout;
     },
   },

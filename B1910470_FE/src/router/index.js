@@ -67,6 +67,14 @@ const routes = [
     },
   },
   {
+    path: "/user",
+    name: "User",
+    component: () => import("@/views/User.vue"),
+    meta: {
+      layout: "MainLayout",
+    },
+  },
+  {
     path: "/product/:id",
     name: "ProductDetail",
     component: () => import("@/views/ProductDetail.vue"),
@@ -89,12 +97,23 @@ const routes = [
       layout: "AdminLayout",
     },
   },
-  // {
-  //   path: "/admin/products/:id",
-  //   name: "product.edit",
-  //   component: () => import("@/views/ProductEdit.vue"),
-  //   props: true,
-  // },
+  {
+    path: "/admin/products/:id",
+    name: "ProductEdit",
+    component: () => import("@/views/admin/ProductEdit.vue"),
+    // props: true,
+    meta: {
+      layout: "AdminLayout",
+    },
+  },
+  {
+    path: "/admin/products",
+    name: "ProductManager",
+    component: () => import("@/views/admin/ProductManager.vue"),
+    meta: {
+      layout: "AdminLayout",
+    },
+  },
 ];
 
 const router = createRouter({

@@ -1,25 +1,26 @@
 <template>
   <tr v-if="product.top === true">
     <td>{{ product.name }}</td>
-    <td>{{ product.price }}</td>
-    <td>{{ product.sale }}</td>
+    <td>{{ format(`${product.price}`) }}</td>
+    <td>{{ format(`${product.sale}`) }}</td>
     <td>
       <div class="btn-group">
         <a href="" title="View">
           <i class="fa fa-eye"></i>
         </a>
-        <router-link :to="{ name: 'product.edit', params: { id: product._id } }"
+        <router-link
+          style="text-decoration: none"
+          :to="`admin/products/${product._id}`"
           ><i class="fa fa-pencil"></i
         ></router-link>
-        <a href="" title="Delete">
-          <i class="fa fa-trash"></i>
-        </a>
       </div>
     </td>
   </tr>
 </template>
 
 <script>
+import { formatVND } from "@/utils/format";
+
 export default {
   props: {
     product: {
@@ -27,7 +28,20 @@ export default {
       required: true,
     },
   },
+
+  methods: {
+    format(number) {
+      return formatVND(number);
+    },
+  },
 };
 </script>
 
-<style></style>
+<style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+</style>

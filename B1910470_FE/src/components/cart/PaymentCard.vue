@@ -20,7 +20,25 @@
           ><i class="fab fa-cc-paypal fa-2x"></i
         ></a>
 
-        <Form class="mt-4" @submit="onSubmit" :validation-schema="schema">
+        <Form
+          class="mt-4"
+          @submit="onSubmit"
+          :validation-schema="schema"
+          :initial-values="dt1"
+        >
+          <div class="form-outline form-white mb-4">
+            <label class="form-label" for="typeName">Số điện thoại</label>
+            <Field
+              id="typeNumber"
+              class="form-control form-control-lg"
+              name="phone"
+              type="number"
+              placeholder="Số điện thoại"
+              maxlength="8"
+            />
+            <ErrorMessage class="errMsg" name="phone" />
+          </div>
+
           <div class="form-outline form-white mb-4">
             <label class="form-label" for="typeName">Tên chủ thẻ</label>
             <Field
@@ -152,13 +170,31 @@ export default {
     ErrorMessage,
   },
 
-  data() {},
+  data() {
+    return {
+      dt1: {
+        phone: "0762957800",
+        name: "Triet Le",
+        cardNumber: "1234567891234567",
+        month: "01",
+        year: "18",
+        csc: "123",
+      },
+    };
+  },
 
   emits: ["reload"],
 
   computed: {
     schema() {
       return yup.object({
+        phone: yup
+          .string()
+          .matches(
+            RegExp("([+]84|84|0[3|5|7|8|9])+(([0-9]{8})|([0-9]{9}))"),
+            "Không đúng định dạng"
+          )
+          .required("Bắt buộc"),
         name: yup
           .string()
           .required("*Trường này không để trống")
@@ -180,13 +216,17 @@ export default {
   methods: {
     formatVND,
     onSubmit(value, { resetForm }) {
-      InvoiceService.create({
-        payload: { cardItems: [...this.productCarts], ...value },
-      });
-      this.clearProductCart();
-      this.$emit("reload", true);
-      console.log({ cardItems: [...this.productCarts], ...value });
-      resetForm();
+      console.log(value);
+      value = { cardItems: [...this.productCarts], ...value };
+      if (value.cardItems?.length > 0) {
+        InvoiceService.create({
+          payload: value,
+        });
+        this.clearProductCart();
+        this.$emit("reload", true);
+        console.log({ cardItems: [...this.productCarts], ...value });
+        resetForm();
+      }
     },
 
     clearProductCart() {

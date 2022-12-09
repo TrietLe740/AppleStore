@@ -14,9 +14,10 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav m-auto">
-            <router-link :to="{ name: 'Home' }">
+            <router-link style="text-decoration: none" :to="{ name: 'Home' }">
               <li class="nav-item active mr-1">
                 <a class="nav-link" href="/"
                   >Trang chủ <span class="sr-only">(current)</span></a
@@ -24,49 +25,67 @@
               </li>
             </router-link>
             <!-- iPhone -->
-            <router-link :to="{ name: 'iPhone' }">
+            <router-link style="text-decoration: none" :to="{ name: 'iPhone' }">
               <li class="nav-item mr-1">
                 <a class="nav-link" href="/iphone">iPhone</a>
               </li>
             </router-link>
             <!-- Macbook -->
-            <router-link :to="{ name: 'Mac' }">
+            <router-link style="text-decoration: none" :to="{ name: 'Mac' }">
               <li class="nav-item mr-1">
                 <a class="nav-link" href="#">Mac</a>
               </li>
             </router-link>
             <!-- iPad -->
-            <router-link :to="{ name: 'iPad' }">
+            <router-link style="text-decoration: none" :to="{ name: 'iPad' }">
               <li class="nav-item mr-1">
                 <a class="nav-link" href="#">iPad</a>
               </li>
             </router-link>
             <!-- AppleWatch -->
-            <router-link :to="{ name: 'AppleWatch' }">
+            <router-link
+              style="text-decoration: none"
+              :to="{ name: 'AppleWatch' }"
+            >
               <li class="nav-item mr-1">
                 <a class="nav-link" href="#">AppleWatch</a>
               </li>
             </router-link>
             <!-- AirPods -->
-            <router-link :to="{ name: 'AirPods' }">
+            <router-link
+              style="text-decoration: none"
+              :to="{ name: 'AirPods' }"
+            >
               <li class="nav-item mr-1">
                 <a class="nav-link" href="#">AirPods</a>
               </li>
             </router-link>
             <!-- AppleCare -->
-            <router-link :to="{ name: 'AppleCare' }">
+            <router-link
+              style="text-decoration: none"
+              :to="{ name: 'AppleCare' }"
+            >
               <li class="nav-item mr-1">
                 <a class="nav-link" href="#">AppleCare</a>
               </li>
             </router-link>
             <Search />
             <!-- Cart -->
-            <router-link :to="{ name: 'Cart' }">
+            <router-link style="text-decoration: none" :to="{ name: 'Cart' }">
+              <button
+                class="btn btn-outline-secondary my-2 my-lg-0"
+                type="submit"
+              >
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </router-link>
+            <!-- Cart -->
+            <router-link style="text-decoration: none" :to="{ name: 'User' }">
               <button
                 class="btn btn-outline-secondary ml-lg-2 my-2 my-sm-0"
                 type="submit"
               >
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-user"></i>
               </button>
             </router-link>
           </ul>
@@ -94,4 +113,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.navbar-nav {
+  text-align: center;
+}
+
+#search {
+  max-width: 200px;
+}
+</style>

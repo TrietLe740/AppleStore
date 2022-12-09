@@ -7,7 +7,7 @@
       Oops! Không tìm thấy trang mà bạn cần!
     </h2>
     <div class="mx-auto">
-      <router-link to="/">
+      <router-link style="text-decoration: none" to="/">
         <button class="go-back-btn btn text-light font-weight-bold">
           Về Trang chủ
         </button>

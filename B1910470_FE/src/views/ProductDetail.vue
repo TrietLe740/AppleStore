@@ -21,8 +21,8 @@
             v-if="options?.sale != 0"
             class="font-weight-light"
             style="font-size: 18px"
-            >{{ `${format(options?.price)}` }}</del
-          >
+            >{{ `${format(options?.price)}` }}
+          </del>
         </p>
         <div>
           <h6>Lựa chọn</h6>
@@ -160,14 +160,14 @@ export default {
           );
         }
 
-        console.log({
-          name: this.product.name,
-          id: this.product._id,
-          price: this.options.price - this.options.sale,
-          img: this.options.colors[this.chooseColor].img,
-          option:
-            this.options.capacity + ", " + this.colors[this.chooseColor].name,
-        });
+        // console.log({
+        //   name: this.product.name,
+        //   id: this.product._id,
+        //   price: this.options.price - this.options.sale,
+        //   img: this.options.colors[this.chooseColor].img,
+        //   option:
+        //     this.options.capacity + ", " + this.colors[this.chooseColor].name,
+        // });
         this.isSubmit = false;
       }
     },

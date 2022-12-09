@@ -7,7 +7,10 @@
             <div class="card-body p-4">
               <div class="row">
                 <div class="col-lg-7">
-                  <router-link :to="{ name: 'Home' }">
+                  <router-link
+                    style="text-decoration: none"
+                    :to="{ name: 'Home' }"
+                  >
                     <h5 class="mb-3">
                       <i class="fa-solid fa-angle-left"></i> Tiếp tục mua hàng
                     </h5>
@@ -34,6 +37,7 @@
                     :img="item.img"
                     :option="item.option"
                     :quantity="item.quantity"
+                    :remain="item.remain"
                     @reload="handleReload"
                   />
                 </div>

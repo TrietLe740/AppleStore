@@ -1,11 +1,6 @@
 <template>
-  <div v-if="product" class="page">
-    <h4>Hiệu chỉnh Product</h4>
-    <!-- <ProductForm
-      :product="product"
-      @submit:Product="updateProduct"
-      @delete:Product="deleteProduct"
-    /> -->
+  <div class="container">
+    <ProductForm />
     <!-- <p>{{ message }}</p> -->
   </div>
 </template>
@@ -17,9 +12,13 @@ import ProductService from "@/services/product.service";
 export default {
   name: "ProductEdit",
 
-  components: { ProductForm },
+  components: {
+    ProductForm,
+  },
 
-  props: { id: { type: String, required: true } },
+  props: {
+    id: { type: String, required: true },
+  },
 
   data() {
     return { Product: null, message: "" };
@@ -39,24 +38,14 @@ export default {
         });
       }
     },
-    // async updateProduct(data) {
-    //   try {
-    //     await ProductService.update(this.product._id, data);
-    //     this.message = "Sản phẩm được cập nhật thành công.";
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // },
-    // async deleteProduct() {
-    //   if (confirm("Bạn muốn xóa Sản phẩm này?")) {
-    //     try {
-    //       await ProductService.delete(this.product._id);
-    //       this.$router.push({ name: "product" });
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    // },
+    async updateProduct(data) {
+      try {
+        await ProductService.update(this.product._id, data);
+        this.message = "Sản phẩm được cập nhật thành công.";
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 
   // created() {

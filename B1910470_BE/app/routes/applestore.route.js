@@ -11,6 +11,7 @@ router
   .delete(products.deleteAll);
 
 router.post("/invoice", invoice.create);
+router.get("/invoice", invoice.get);
 
 router.route("/top").get(products.findAllTop);
 

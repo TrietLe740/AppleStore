@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="nav">
       <a href="#" class="nav-logo">
         <img src="../../assets/logo.svg" alt="" />
@@ -8,33 +8,17 @@
         <i class="fa fa-bars" v-on:click="openMenuMobile()"></i>
       </div>
     </div>
-    <div class="header-top">
-      <div class="header-top-content">
-        <ul class="options-user ml-auto">
-          <li>
-            <a
-              href="#"
-              v-on:click.prevent.stop="openDropdownUser()"
-              class="options-user-head"
-              ><i class="fa fa-user"></i
-            ></a>
-            <ul id="myDropdownUser">
-              <li>
-                <a href=""><i class="fa fa-sign-out"></i> Sign out</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
     <div class="sidebar-list" id="sidebar">
       <div class="sidebar-list-item">
-        <router-link :to="{ name: 'AdminDashboard' }">
+        <router-link
+          style="text-decoration: none"
+          :to="{ name: 'AdminDashboard' }"
+        >
           <i class="fa fa-home"></i>
         </router-link>
       </div>
       <div class="sidebar-list-item">
-        <router-link to="...">
+        <router-link style="text-decoration: none" to="...">
           <i class="fa fa-user"></i>
         </router-link>
       </div>
@@ -44,9 +28,9 @@
         </a>
       </div>
       <div class="sidebar-list-item">
-        <a href="">
+        <router-link :to="{ name: 'ProductManager' }">
           <i class="fa fa-shopping-bag"></i>
-        </a>
+        </router-link>
       </div>
       <div class="sidebar-list-item">
         <a href="">
@@ -118,23 +102,6 @@ export default {
 
 .nav-mobile {
   display: none;
-}
-
-.header-top {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 71px;
-  padding: 0rem;
-  background-color: #fff;
-  z-index: 1;
-  transition: all 0.2s ease;
-  box-shadow: 0px 0px 40px 0px rgba(82, 63, 105, 0.1);
-  padding: 25px;
-}
-
-.header-top-content {
-  display: flex;
 }
 
 .options-user {
